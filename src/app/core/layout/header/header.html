@@ -1,0 +1,122 @@
+<!-- <header class="header">
+  <div class="header-content">
+    <button
+      class="sidebar-toggle"
+      (click)="onToggleSidebar()"
+      [attr.aria-label]="sidebarCollapsed() ? 'Expand sidebar' : 'Collapse sidebar'"
+      type="button">
+      <span class="toggle-icon" [class.rotated]="sidebarCollapsed()">☰</span>
+    </button>
+
+    <div class="logo">
+      <h2>NextFirst Filtrex</h2>
+    </div>
+
+    <nav class="nav-menu">
+      <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">
+        <span class="nav-icon">🏠</span>
+        Dashboard
+      </a>
+      <a routerLink="/user" routerLinkActive="active" class="nav-link">
+        <span class="nav-icon">🔍</span>
+        Search
+      </a>
+      <a routerLink="/admin" routerLinkActive="active" class="nav-link">
+        <span class="nav-icon">⚙️</span>
+        Admin
+      </a>
+    </nav>
+
+    <div class="user-menu">
+      <div class="user-info">
+        <span class="user-avatar">👤</span>
+        <span class="user-name">Welcome</span>
+      </div>
+      <button class="logout-btn" (click)="logout()">
+        <span class="logout-icon">🚪</span>
+        Logout
+      </button>
+    </div>
+  </div>
+</header> -->
+
+
+<header class="header">
+  <button
+    class="menu-btn"
+    aria-label="Toggle menu"
+    (click)="onToggle()">
+    ☰
+  </button>
+
+  <div class="header-content">
+    <button
+      class="back-btn"
+      aria-label="Go back"
+      (click)="onBack()">
+      ←
+    </button>
+    <h1 class="page-title">{{ pageTitle() }}</h1>
+  </div>
+
+  <!-- Filters Section -->
+  <div class="header-filters" *ngIf="headerContent$().filters?.length">
+    <div class="filters-group">
+      <ng-container *ngFor="let filter of headerContent$().filters">
+        <div class="filter-item" *ngIf="filter.visible !== false">
+          <label *ngIf="filter.label">{{ filter.label }}</label>
+          
+          <!-- Select Filter -->
+          <select 
+            *ngIf="filter.type === 'select'"
+            [(ngModel)]="filter.value"
+            [disabled]="filter.disabled ?? false"
+            (change)="onFilterChange(filter, filter.value)"
+            class="filter-input">
+            <option *ngFor="let opt of filter.options" [value]="opt.value">
+              {{ opt.label }}
+            </option>
+          </select>
+
+          <!-- Date Filter -->
+          <input 
+            *ngIf="filter.type === 'date'"
+            type="date"
+            [(ngModel)]="filter.value"
+            [disabled]="filter.disabled ?? false"
+            (change)="onFilterChange(filter, filter.value)"
+            class="filter-input">
+
+          <!-- Number Filter -->
+          <input 
+            *ngIf="filter.type === 'number'"
+            type="number"
+            [(ngModel)]="filter.value"
+            [disabled]="filter.disabled ?? false"
+            (change)="onFilterChange(filter, filter.value)"
+            class="filter-input">
+
+          <!-- Text Input Filter -->
+          <input 
+            *ngIf="filter.type === 'input'"
+            type="text"
+            [(ngModel)]="filter.value"
+            [placeholder]="filter.placeholder || ''"
+            [disabled]="filter.disabled ?? false"
+            (change)="onFilterChange(filter, filter.value)"
+            class="filter-input">
+
+          <!-- Button Filter -->
+          <button 
+            *ngIf="filter.type === 'button'"
+            [disabled]="filter.disabled ?? false"
+            (click)="onFilterChange(filter, filter.value)"
+            class="filter-btn">
+            {{ filter.label || 'Apply' }}
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</header>
+

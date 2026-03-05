@@ -1,0 +1,89 @@
+<div class="realtime-container">
+  <!-- Loading State -->
+  <div class="loading-state" *ngIf="isLoading">
+    <div class="loading-spinner"></div>
+    <p>Loading real-time data...</p>
+  </div>
+
+  <!-- Error State -->
+  <div class="error-state" *ngIf="hasError && !isLoading">
+    <div class="error-icon">⚠️</div>
+    <h3>Connection Error</h3>
+    <p class="error-message">{{ errorMessage }}</p>
+    <button class="retry-btn" (click)="retryLoad()">Retry Connection</button>
+  </div>
+
+  <!-- Data Container -->
+  <div class="shopfloor-container" *ngIf="liveData && !hasError && !isLoading">
+
+    <!-- HEADER (FULL WIDTH) -->
+    <div class="full-header">
+      <span>REAL-TIME MACHINE DATA</span>
+      <span>SKU: {{ liveData.sku }}</span>
+      <span>SHIFT : {{ liveData.shift }}</span>
+    </div>
+
+    <!-- PANEL -->
+    <div class="machine-panel">
+
+      <div class="grid">
+
+        <div class="cell">
+          <label>Production Count</label>
+          <div>{{ liveData.productionCount }}</div>
+        </div>
+
+        <div class="cell">
+          <label>Cycle Time</label>
+          <div>{{ liveData.cycleTime }}</div>
+        </div>
+
+        <div class="cell">
+          <label>Air Flow</label>
+          <div>{{ liveData.airFlowTestResult | uppercase }}</div>
+        </div>
+
+        <div class="cell">
+          <label>Assembly Height</label>
+          <div>{{ liveData.finalAssemblyHeight }}</div>
+        </div>
+
+        <div class="cell">
+          <label>Top Press Time</label>
+          <div>{{ liveData.topCapPressTime }}</div>
+        </div>
+
+        <div class="cell">
+          <label>Top Hold Time</label>
+          <div>{{ liveData.topCapHoldTime }}</div>
+        </div>
+
+        <div class="cell">
+          <label>Bottom Press Time</label>
+          <div>{{ liveData.bottomCapPressTime }}</div>
+        </div>
+
+        <div class="cell">
+          <label>Bottom Hold Time</label>
+          <div>{{ liveData.bottomCapHoldTime }}</div>
+        </div>
+
+        <div class="cell wide">
+          <label>Timestamp</label>
+          <div>{{ liveData.timestamp | date:'medium' }}</div>
+        </div>
+
+      </div>
+
+      <!-- STATUS -->
+      <div class="status-footer">
+        <span class="status"
+              [class.ok]="statusOk"
+              [class.not-ok]="!statusOk">
+          {{ statusOk ? 'OK' : 'NOT OK' }}
+        </span>
+      </div>
+
+    </div>
+  </div>
+</div>

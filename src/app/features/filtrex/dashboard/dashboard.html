@@ -1,0 +1,104 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>Welcome to NextFirst Filtrex</h1>
+    <p>Your comprehensive filtering and data management solution</p>
+  </div>
+
+  <div class="dashboard-content">
+    <div class="stats-header">
+      <h2>Production Summary</h2>
+      <div class="status-indicator">
+        <span class="status-dot" [class.active]="!isLoading && !hasError"></span>
+        <span class="status-text">
+          {{ isLoading ? 'Loading...' : hasError ? 'Error' : 'Live Updates' }}
+        </span>
+        <span class="last-updated" *ngIf="lastUpdated && !isLoading && !hasError">
+          • Updated {{ lastUpdated | date:'shortTime' }}
+        </span>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <!-- Total Production Card -->
+      <div class="stat-card production-card">
+        <div class="stat-icon production-icon">🏭</div>
+        <div class="stat-info">
+          <h3>Total Production</h3>
+          <p class="stat-number" *ngIf="!isLoading && !hasError">{{ productionData.totalProduction }}</p>
+          <p class="stat-loading" *ngIf="isLoading">Loading...</p>
+          <p class="stat-error" *ngIf="hasError && !isLoading">N/A</p>
+        </div>
+      </div>
+
+      <!-- OK Parts Card -->
+      <div class="stat-card parts-card ok-parts-card">
+        <div class="stat-icon parts-icon ok-icon">✅</div>
+        <div class="stat-info">
+          <h3>OK Parts</h3>
+          <p class="stat-number" *ngIf="!isLoading && !hasError">{{ productionData.okParts }}</p>
+          <p class="stat-loading" *ngIf="isLoading">Loading...</p>
+          <p class="stat-error" *ngIf="hasError && !isLoading">N/A</p>
+        </div>
+      </div>
+
+      <!-- NOTOK Parts Card -->
+      <div class="stat-card parts-card notok-parts-card">
+        <div class="stat-icon parts-icon notok-icon">❌</div>
+        <div class="stat-info">
+          <h3>NOTOK Parts</h3>
+          <p class="stat-number" *ngIf="!isLoading && !hasError">{{ productionData.notOkParts }}</p>
+          <p class="stat-loading" *ngIf="isLoading">Loading...</p>
+          <p class="stat-error" *ngIf="hasError && !isLoading">N/A</p>
+        </div>
+      </div>
+
+      <!-- Current Shift Card -->
+      <div class="stat-card shift-card">
+        <div class="stat-icon shift-icon">⚡</div>
+        <div class="stat-info">
+          <h3>Current Shift</h3>
+          <p class="stat-number" *ngIf="!isLoading && !hasError">{{ productionData.shift }}</p>
+          <p class="stat-loading" *ngIf="isLoading">Loading...</p>
+          <p class="stat-error" *ngIf="hasError && !isLoading">N/A</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error Message -->
+    <div class="error-message" *ngIf="hasError && !isLoading">
+      <p>{{ errorMessage }}</p>
+      <button class="retry-btn" (click)="retryLoad()">Retry</button>
+    </div>
+
+    <div class="quick-actions">
+      <h2>Quick Actions</h2>
+      <div class="action-grid">
+        <button class="action-btn" routerLink="/realtimedata">
+          <span class="action-icon">🔍</span>
+          <span>RealTime Data</span>
+        </button>
+
+        <button class="action-btn" routerLink="/production-report">
+          <span class="action-icon">⚙️</span>
+          <span>Production Summary Report</span>
+        </button>
+
+        <button class="action-btn" routerLink="/production-totals-report">
+          <span class="action-icon">📈</span>
+          <span>View Total PartCount</span>
+        </button>
+
+        <button class="action-btn" routerLink="/view-reports">
+          <span class="action-icon">📤</span>
+          <span>Parameter Reports</span>
+        </button>
+
+        <button class="action-btn" routerLink="/graphical-reports">
+          <span class="action-icon">📊</span>
+          <span>View graphical Reports</span>
+        </button>
+      </div>
+    </div>
+    
+  </div>
+</div>

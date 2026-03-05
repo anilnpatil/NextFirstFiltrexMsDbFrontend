@@ -1,0 +1,75 @@
+<!-- ERROR STATE -->
+<div class="error-banner" *ngIf="errorMessage && !loading">
+  <div class="error-content">
+    <span class="error-icon">⚠️</span>
+    <span class="error-text">{{ errorMessage }}</span>
+    <button class="retry-link" (click)="apply()" type="button">Retry</button>
+  </div>
+</div>
+
+<!-- TABLE WRAPPER -->
+<div class="table-wrapper" *ngIf="!errorMessage">
+  <table class="report-table" *ngIf="data.length">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Air Flow</th>
+        <th>Final Height</th>
+        <th>Top Press</th>
+        <th>Bottom Press</th>
+        <th>Top Hold</th>
+        <th>Bottom Hold</th>
+        <th>Child Part</th>
+        <th class="status-col">Status</th>
+        <th class="shift-col">Shift</th>
+        <th>SKU</th>
+        <th>Cycle</th>
+        <th class="done-time-col">Done Time</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let d of data">
+        <td>{{ d.id }}</td>
+        <td>{{ d.airFlowTestResult }}</td>
+        <td>{{ d.finalAssemblyHeight }}</td>
+        <td>{{ d.topCapPressTime }}</td>
+        <td>{{ d.bottomCapPressTime }}</td>
+        <td>{{ d.topCapHoldTime }}</td>
+        <td>{{ d.bottomCapHoldTime }}</td>
+        <td class="status-col">{{ d.childPartRefillStatus }}</td>
+        <td>
+          <span class="status"
+                [class.ok]="d.status === 1"
+                [class.notok]="d.status !== 1">
+            {{ d.status === 1 ? 'OK' : 'NOT OK' }}
+          </span>
+        </td>
+        <td class="shift-col">{{ d.shift }}</td>
+        <td>{{ d.sku }}</td>
+        <td>{{ d.cycleTime }}</td>
+        <td class="done-time-col">
+          {{ d.timestamp | date:'dd-MM-yyyy HH:mm' }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="empty" *ngIf="!loading && !data.length">
+    No records found
+  </div>
+</div>
+
+<!-- PAGINATION -->
+<div class="pagination" *ngIf="!errorMessage">
+  <button (click)="prev()" [disabled]="page === 0" type="button">Prev</button>
+
+  <span>
+    Page {{ page + 1 }} of {{ totalPages }}
+    ({{ totalElements }} records)
+  </span>
+
+  <button (click)="next()" [disabled]="page >= totalPages - 1" type="button">
+    Next
+  </button>
+</div>

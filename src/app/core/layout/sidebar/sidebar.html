@@ -1,0 +1,18 @@
+<aside class="sidebar" [class.open]="open()">
+  <nav>
+    <a routerLink="/dashboard" routerLinkActive="active" (click)="close.emit()">
+      📊 Dashboard
+    </a>
+
+    <a *ngIf="isAdmin()"
+       routerLink="/admin"
+       routerLinkActive="active"
+       (click)="close.emit()">
+      ⚙️ Admin
+    </a>    
+
+    <button class="logout" (click)="logout()">
+      🚪 Logout
+    </button>
+  </nav>
+</aside>
