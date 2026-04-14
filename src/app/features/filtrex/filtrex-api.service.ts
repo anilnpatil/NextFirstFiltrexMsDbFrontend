@@ -3,32 +3,33 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, map, shareReplay } from 'rxjs';
 import { API_CONFIG } from './api.config';
 
-/* =======================
-   MODELS
-======================= */
+/*    MODELS  */
 
 export interface LiveData {
-  id: number;
-  productionCount: number;
-  status: number;
-  airFlowTestResult: string;
-  finalAssemblyHeight: number;
-  topCapPressTime: number;
-  topCapHoldTime: number;
-  bottomCapPressTime: number;
-  bottomCapHoldTime: number;
-  childPartRefillStatus: string;
-  sku: string;
+  slNo: number;
+  sku: number;
   shift: number;
-  timestamp: string;
-  cycleTime: number;
+  topCapPressAndHoldTime: number;
+  bottomCapPressAndHoldTime: number;
+  blockHeightValue: number;
+  blockHeightInspectionStatus: number;
+  airFlowTestResult: string;
+  partStatus: number;
+  cycleTime: number; 
+  productionDateTime: any;
+  productionDate: any;
+  clothRefillStatus: number;
+  capRefillStatus: number;
+  glueRefillStatus: number; 
+  
 }
-
 export interface ProductionSummary {
   totalProduction: number;
   okParts: number;
   notOkParts: number;
   shift: number;
+  sku: string;
+  productionDateTime?: string;
 }
 
 // Pagination response model
@@ -49,7 +50,6 @@ interface ApiResponse<T> {
 
 
 // SERVICE
-
 @Injectable({
   providedIn: 'root'
 })
@@ -65,21 +65,11 @@ export class FiltrexApiService {
       .pipe(shareReplay(1));
   }
 
-
   //PRODUCTION SUMMARY (Single object)  
   getProductionSummaryByShift(): Observable<ProductionSummary> {
-    return this.http
-      .get<ApiResponse<ProductionSummary>>(
-        API_CONFIG.FILTREX.PRODUCTION_SUMMARY_SHIFT
-      )
-      .pipe(
-        map(response => {
-          if (response?.statusCode === 'OK' && response.body) {
-            return response.body;
-          }
-          throw new Error('Invalid production summary response');
-        })
-      );
+    return this.http.get<ProductionSummary>(
+      API_CONFIG.FILTREX.PRODUCTION_SUMMARY_SHIFT
+    );
   }
 
   //PAGINATED PRODUCTION REPORT (SPRING PAGE)

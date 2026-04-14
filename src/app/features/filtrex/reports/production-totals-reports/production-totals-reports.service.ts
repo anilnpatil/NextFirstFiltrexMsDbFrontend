@@ -21,14 +21,14 @@ params: {
 fromDate?: string;
 toDate?: string;
 year?: number;
-sku: string;
-shift: string;
+sku?: number;
+shift?: number;
 }
 ): Observable<ProductionTotalsRow[]> {
 		// Build params only when values are present
 		let httpParams = new HttpParams();
-		if (params.sku) httpParams = httpParams.set('sku', params.sku);
-		if (params.shift) httpParams = httpParams.set('shift', params.shift);
+		if (params.sku != null && params.sku !== 0) httpParams = httpParams.set('sku', params.sku.toString());
+		if (params.shift != null && params.shift !== 0) httpParams = httpParams.set('shift', params.shift.toString());
 
 		if (mode === 'DAY') {
 			if (params.fromDate) httpParams = httpParams.set('fromDate', params.fromDate);

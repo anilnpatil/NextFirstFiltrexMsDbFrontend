@@ -404,39 +404,3 @@ table {
   border-bottom: 1px dashed #e5e7eb;
   padding-bottom: 6px;
 }
-
-
-
-
-/* ================= TABLE ================= */
-.table-wrapper {
-  margin-top: 16px;
-  background: #fff;
-  border-radius: 12px;
-  max-height: calc(100vh - 240px);
-  overflow: auto;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-
-  thead {
-    position: sticky;
-    top: 0;
-    background: #f1f5f9;
-    z-index: 2;
-  }
-
-  th, td {
-    padding: 10px;
-    border-bottom: 1px solid #e5e7eb;
-    text-align: center;
-    font-size: 13px;
-  }
-
-  .sku { font-weight: 600; }
-  .total { color: #ca8a04; font-weight: 700; }
-  .ok { color: #15803d; font-weight: 700; }
-  .nok { color: #b91c1c; font-weight: 700; }
-}

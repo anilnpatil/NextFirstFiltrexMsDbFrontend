@@ -1,6 +1,4 @@
-/* =========================================================
-   HOST
-========================================================= */
+/*    HOST  */
 :host {
   display: block;
   height: 100vh;
@@ -12,9 +10,7 @@
   margin: 0;
 }
 
-/* =========================================================
-   ERROR BANNER
-========================================================= */
+/*    ERROR BANNER  */
 .error-banner {
   background: #fee2e2;
   border-left: 4px solid #dc3545;
@@ -57,40 +53,32 @@
   }
 }
 
-/* =========================================================
-   TABLE WRAPPER
-========================================================= */
+/*    TABLE WRAPPER  */
 .table-wrapper {
   position: fixed;
   top: var(--app-header-height, 60px);
   left: 0;
-  right: 0;
-  /* leave extra space so the fixed pagination does not overlap rows */
+  right: 0;  
   bottom: 72px;
   overflow: auto;
-  background: #f8fafc;
-  /* remove top padding so the table thead sits flush under the fixed app header */
+  background: #f8fafc;  
   padding: 0 1px 2px 3px;
 }
 
-/* =========================================================
-   TABLE
-========================================================= */
+/*    TABLE   */
 .report-table {
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
   background: #ffffff;
   font-size: 13px;
-  margin: 0; /* ensure no extra gap above the table */
+  margin: 0; 
 }
 
-/* =========================================================
-   STICKY TABLE HEADER
-========================================================= */
+/*    STICKY TABLE HEADER  */
 .report-table thead th {
   position: sticky;
-  top: 0; /* sticky within the table-wrapper (which is positioned under the app header) */
+  top: 0; 
   z-index: 10;
 
   background: #e0e7ff;
@@ -100,15 +88,12 @@
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-
   border-bottom: 2px solid #c7d2fe;
   border-right: 1px solid #c7d2fe;
   white-space: nowrap;
 }
 
-/* =========================================================
-   TABLE BODY
-========================================================= */
+/*    TABLE BODY  */
 .report-table tbody td {
   padding: 8px 10px;
   border-bottom: 1px solid #e5e7eb;
@@ -132,23 +117,47 @@
 .report-table td:last-child {
   border-right: none;
 }
-
-.done-time-col {
-  width: 110px;   /* adjust if needed */
-  min-width: 110px;
+.slNo-col{
+  width: 50px;
+  min-width: 50px;
 }
-.shift-col {
-  width: 40px;
-  min-width: 40px;
-}
-.status-col{
+.topCapPressAndHoldTime-col,
+.bottomCapPressAndHoldTime-col,
+.blockHeightValue-col {
   width: 60px;
   min-width: 60px;
 }
+.blockHeightInspectionStatus-col {
+  width: 70px;
+  min-width: 70px;
+}
 
-/* =========================================================
-   STATUS TAGS
-========================================================= */
+.productionDateTime-col {
+  width: 70px;   
+  min-width: 70px;
+}
+.airFlowTestResult-col {
+  width: 40px;   
+  min-width: 40px;
+}
+.partStatus-col {
+  width: 30px;
+  min-width: 30px;
+}
+.shift-col {
+  width: 30px;
+  min-width: 30px;
+}
+.sku-col {
+  width: 100px;
+  min-width: 100px;
+}
+.cycleTime-col{
+  width: 30px;
+  min-width: 30px;
+}
+
+/*    STATUS TAGS */
 .status.ok {
   color: #15803d;
   font-weight: 700;
@@ -159,9 +168,7 @@
   font-weight: 700;
 }
 
-/* =========================================================
-   EMPTY STATE
-========================================================= */
+/*    EMPTY STATE  */
 .empty {
   padding: 40px;
   text-align: center;
@@ -170,9 +177,7 @@
   font-weight: 600;
 }
 
-/* =========================================================
-   PAGINATION (FIXED)
-========================================================= */
+/*    PAGINATION (FIXED)  */
 .pagination {
   position: fixed;
   bottom: 0;
@@ -189,7 +194,7 @@
   align-items: center;
   gap: 10px;
 
-  z-index: 1200; /* ensure pagination floats above table content */
+  z-index: 1200; 
   box-shadow: 0 -6px 18px rgba(2, 6, 23, 0.06);
   padding: 0px 5px;
 }
@@ -220,9 +225,7 @@
   color: #334155;
 }
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+/*   RESPONSIVE  */
 @media (max-width: 1024px) {
   .filters {
     flex-wrap: wrap;

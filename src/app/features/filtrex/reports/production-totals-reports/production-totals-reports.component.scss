@@ -1,6 +1,4 @@
-/* =========================================================
-   HOST
-========================================================= */
+/*    HOST   */
 :host {
   display: block;
   height: 100vh;
@@ -10,9 +8,7 @@
   --app-header-height: 60px;
 }
 
-/* =========================================================
-   TABLE CONTAINER (ONLY THIS SCROLLS)
-========================================================= */
+/*   TABLE CONTAINER (ONLY THIS SCROLLS)  */
 .table-wrapper {
   position: fixed;
   top: var(--app-header-height, 60px);
@@ -24,9 +20,7 @@
   background: #f8fafc;
 }
 
-/* =========================================================
-   TABLE
-========================================================= */
+/*   TABLE  */
 .report-table {
   width: 100%;
   border-collapse: collapse;
@@ -35,9 +29,7 @@
   font-size: 13px;
 }
 
-/* =========================================================
-   STICKY HEADER + COLUMN DIVIDERS
-========================================================= */
+/*    STICKY HEADER + COLUMN DIVIDERS  */
 .report-table thead th {
   position: sticky;
   top: 0;
@@ -56,9 +48,7 @@
   white-space: nowrap;
 }
 
-/* =========================================================
-   BODY CELLS + COLUMN DIVIDERS
-========================================================= */
+/*    BODY CELLS + COLUMN DIVIDERS  */
 .report-table tbody td {
   padding: 8px 12px;
 
@@ -100,9 +90,7 @@
 }
 
 
-/* =========================================================
-   STATES
-========================================================= */
+/*    STATES */
 .loading,
 .empty {
   padding: 40px;
@@ -112,9 +100,7 @@
   color: #64748b;
 }
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+/*    RESPONSIVE  */
 @media (max-width: 1024px) {
   .filters {
     flex-wrap: wrap;

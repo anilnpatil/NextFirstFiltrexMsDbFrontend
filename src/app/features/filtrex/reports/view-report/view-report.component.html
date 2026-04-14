@@ -12,44 +12,40 @@
   <table class="report-table" *ngIf="data.length">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Air Flow</th>
-        <th>Final Height</th>
-        <th>Top Press</th>
-        <th>Bottom Press</th>
-        <th>Top Hold</th>
-        <th>Bottom Hold</th>
-        <th>Child Part</th>
-        <th class="status-col">Status</th>
+        <th class ="slNo-col">slNo</th>
+        <th class ="topCapPressAndHoldTime-col">TC_PressHoldTime</th>
+        <th class="bottomCapPressAndHoldTime-col">BC_PressHoldTime</th>
+        <th class="blockHeightValue-col">BlockHeightValue</th>
+        <th class="blockHeightInspectionStatus-col">BlockHeightStatus</th>
+        <th class="airFlowTestResult-col">AirFlowStatus</th>       
+        <th class="partStatus-col">PartStatus</th>
         <th class="shift-col">Shift</th>
-        <th>SKU</th>
-        <th>Cycle</th>
-        <th class="done-time-col">Done Time</th>
+        <th class="sku-col"> SKU</th>
+        <th class="cycleTime-col">CycleTime</th>
+        <th class="productionDateTime-col">ProductionDateTime</th>
       </tr>
     </thead>
-
+    
     <tbody>
       <tr *ngFor="let d of data">
-        <td>{{ d.id }}</td>
-        <td>{{ d.airFlowTestResult }}</td>
-        <td>{{ d.finalAssemblyHeight }}</td>
-        <td>{{ d.topCapPressTime }}</td>
-        <td>{{ d.bottomCapPressTime }}</td>
-        <td>{{ d.topCapHoldTime }}</td>
-        <td>{{ d.bottomCapHoldTime }}</td>
-        <td class="status-col">{{ d.childPartRefillStatus }}</td>
-        <td>
+        <td class="slNo-col">{{ d.slNo }}</td>
+        <td class="topCapPressAndHoldTime-col">{{ d.topCapPressAndHoldTime }}</td>
+        <td class="bottomCapPressAndHoldTime-col">{{ d.bottomCapPressAndHoldTime }}</td>
+        <td class="blockHeightValue-col">{{ d.blockHeightValue }}</td>
+        <td class="blockHeightInspectionStatus-col">{{ d.blockHeightInspectionStatus }}</td>
+        <td class="airFlowTestResult-col">{{ d.airFlowTestResult }}</td>        
+        <td class="partStatus-col">
           <span class="status"
-                [class.ok]="d.status === 1"
-                [class.notok]="d.status !== 1">
-            {{ d.status === 1 ? 'OK' : 'NOT OK' }}
+                [class.ok]="d.partStatus === 1"
+                [class.notok]="d.partStatus !== 1">
+            {{ d.partStatus === 1 ? 'OK' : 'NOT OK' }}
           </span>
         </td>
         <td class="shift-col">{{ d.shift }}</td>
-        <td>{{ d.sku }}</td>
-        <td>{{ d.cycleTime }}</td>
-        <td class="done-time-col">
-          {{ d.timestamp | date:'dd-MM-yyyy HH:mm' }}
+        <td class="sku-col">{{ d.sku }}</td>
+        <td class="cycleTime-col">{{ d.cycleTime }}</td>
+        <td class="productionDateTime-col">
+          {{ d.productionDateTime | date:'dd-MM-yyyy HH:mm' }}
         </td>
       </tr>
     </tbody>

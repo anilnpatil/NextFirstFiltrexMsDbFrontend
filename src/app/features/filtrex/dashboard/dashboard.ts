@@ -27,13 +27,15 @@ export class Dashboard implements OnInit, OnDestroy {
     totalProduction: 0,
     okParts: 0,
     notOkParts: 0,
-    shift: 0
+    shift: 0,
+    sku: '',
+    productionDateTime: undefined
   };
 
   isLoading = true;
   hasError = false;
   errorMessage = '';
-  lastUpdated: Date | null = null;
+  lastUpdated: string | null = null;
 
   private destroy$ = new Subject<void>();
   private api = inject(FiltrexApiService);
@@ -63,7 +65,7 @@ export class Dashboard implements OnInit, OnDestroy {
           this.hasError = false;
           this.errorMessage = '';
           this.errorService.clearError();
-          this.lastUpdated = new Date();
+          this.lastUpdated = data.productionDateTime ?? null;
           this.cdr.markForCheck();
         },
         error: (error) => {

@@ -30,8 +30,8 @@ export class ViewReportComponent implements OnInit, OnDestroy {
 
   startDate: string = '';
   endDate: string = '';
-  shift = 'ALL';
-  sku = 'ALL';
+  shift = 0;
+  sku = 0;
 
   data: LiveData[] = [];
   loading = false;
@@ -77,6 +77,7 @@ export class ViewReportComponent implements OnInit, OnDestroy {
         value: this.startDate,
         onChange: (value) => {
           this.startDate = value;
+          this.fetchData(true);
         }
       },
       {
@@ -86,6 +87,7 @@ export class ViewReportComponent implements OnInit, OnDestroy {
         value: this.endDate,
         onChange: (value) => {
           this.endDate = value;
+          this.fetchData(true);
         }
       },
       {
@@ -95,13 +97,25 @@ export class ViewReportComponent implements OnInit, OnDestroy {
         placeholder: 'ALL',
         value: this.sku,
         options: [
-          { label: 'ALL', value: 'ALL' },
-          { label: 'DFC Inline RO', value: 'DFC Inline RO' },
-          { label: 'gold', value: 'gold' },
-          { label: 'silver', value: 'silver' }
+          { label: '0) ALL', value: 0 },
+          { label: '1) SP210', value: 1 },
+          { label: '2) DFC Nano', value: 2 },
+          { label: '3) 10" STD MATRIKX models', value: 3 },
+          { label: '4) DFC Inline RO', value: 4 },
+          { label: '5) Havells carbon block', value: 5 },
+          { label: '6) Ecowater078', value: 6 },
+          { label: '7) Ecowater108', value: 7 },
+          { label: '8) DFC Chemiblock', value: 8 },
+          { label: '9) Nova family(I Nova & G nova)', value: 9 },
+          { label: '10) Livpure', value: 10 },
+          { label: '11) Ecowater055', value: 11 },
+          { label: '12) DFC MCHPS', value: 12 },
+          { label: '13) Aquatru pre', value: 13 },
+          { label: '14) Aquatru post', value: 14 }
         ],
         onChange: (value) => {
           this.sku = value;          
+          this.fetchData(true);
         }
       },
       {
@@ -111,13 +125,14 @@ export class ViewReportComponent implements OnInit, OnDestroy {
         placeholder: 'ALL',
         value: this.shift,
         options: [
-          { label: 'ALL', value: 'ALL' },
-          { label: '1', value: '1' },
-          { label: '2', value: '2' },
-          { label: '3', value: '3' }
+          { label: 'ALL', value: 0 },
+          { label: '1', value: 1 },
+          { label: '2', value: 2 },
+          { label: '3', value: 3 }
         ],
         onChange: (value) => {
-          this.shift = value;         
+          this.shift = value;
+          this.fetchData(true);;
         }
       },
       {
@@ -173,8 +188,8 @@ export class ViewReportComponent implements OnInit, OnDestroy {
 
     const start = this.startDate || this.endDate;
     const end = this.endDate || this.startDate;
-    const shiftValue = this.shift === 'ALL' ? undefined : Number(this.shift);
-    const skuValue = this.sku === 'ALL' ? undefined : String(this.sku);
+    const shiftValue = this.shift === 0 ? undefined : Number(this.shift);
+    const skuValue = this.sku === 0 ? undefined : String(this.sku);
 
     this.api
       .getPagedReportByDateRange(
@@ -190,9 +205,7 @@ export class ViewReportComponent implements OnInit, OnDestroy {
         next: (res: PagedResponse<LiveData>) => {
           this.page = res.number;
           this.totalPages = res.totalPages;
-          this.totalElements = res.totalElements;
-          // For traditional pagination we should replace the page data
-          // instead of appending; this keeps the UI consistent when
+          this.totalElements = res.totalElements;          
           // navigating pages.
           this.data = res.content;
 
@@ -201,14 +214,10 @@ export class ViewReportComponent implements OnInit, OnDestroy {
           this.updateFilterButtons();
           this.cdr.markForCheck();
 
-          // After DOM updates, ensure the table wrapper scrolls to top so
-          // the user sees the beginning of the page and pagination/info.
           setTimeout(() => this.scrollToTop(), 0);
         },
-        error: (err) => {
-          // show friendly error message when backend is unavailable
-          // eslint-disable-next-line no-console
-          console.error('Report fetch error', err);
+        error: (err) => {          
+          // console.error('Report fetch error', err);
           this.data = [];
           this.loading = false;
           this.errorMessage = err?.message ?? 'Failed to load report data. Please try again or adjust your filters.';
@@ -224,13 +233,11 @@ export class ViewReportComponent implements OnInit, OnDestroy {
       const wrapper = document.querySelector('.table-wrapper') as HTMLElement | null;
       if (wrapper) {
         wrapper.scrollTop = 0;
-      } else {
-        // fallback: scroll window to top of the report area
+      } else {        
         window.scrollTo({ top: 0, behavior: 'auto' });
       }
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.warn('scrollToTop failed', e);
+    } catch (e) {      
+      // console.warn('scrollToTop failed', e);
     }
   }
 

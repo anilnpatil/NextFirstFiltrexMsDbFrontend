@@ -24,8 +24,8 @@ export class ProductionQualityChartComponent implements OnInit, OnDestroy {
   fromDate?: string;
   toDate?: string;
   year?: number;
-  sku: string = 'ALL';
-  shift: string = 'ALL';
+  sku = 0;
+  shift = 0;
 
   loading = false;
   errorMessage: string | null = null;
@@ -121,6 +121,7 @@ export class ProductionQualityChartComponent implements OnInit, OnDestroy {
         visible: this.mode === 'DAY',
         onChange: (value) => {
           this.fromDate = value;
+          this.load();
         }
       },
       {
@@ -131,6 +132,7 @@ export class ProductionQualityChartComponent implements OnInit, OnDestroy {
         visible: this.mode === 'DAY',
         onChange: (value) => {
           this.toDate = value;
+          this.load();
         }
       },
       {
@@ -141,22 +143,35 @@ export class ProductionQualityChartComponent implements OnInit, OnDestroy {
         visible: this.mode !== 'DAY',
         onChange: (value) => {
           this.year = value;
+          this.load();
         }
       },
       {
         name: 'sku',
         type: 'select',
         label: 'SKU',
-        placeholder: 'ALL',
         value: this.sku,
         options: [
-          { label: 'ALL', value: 'ALL' },
-          { label: 'SKU1', value: 'SKU1' },
-          { label: 'SKU2', value: 'SKU2' },
-          { label: 'SKU3', value: 'SKU3' }
+          { label: '0) ALL', value: 0 },
+          { label: '1) SP210', value: 1 },
+          { label: '2) DFC Nano', value: 2 },
+          { label: '3) 10" STD MATRIKX models', value: 3 },
+          { label: '4) DFC Inline RO', value: 4 },
+          { label: '5) Havells carbon block', value: 5 },
+          { label: '6) Ecowater078', value: 6 },
+          { label: '7) Ecowater108', value: 7 },
+          { label: '8) DFC Chemiblock', value: 8 },
+          { label: '9) Nova family(I Nova & G nova)', value: 9 },
+          { label: '10) Livpure', value: 10 },
+          { label: '11) Ecowater055', value: 11 },
+          { label: '12) DFC MCHPS', value: 12 },
+          { label: '13) Aquatru pre', value: 13 },
+          { label: '14) Aquatru post', value: 14 }
+          // other SKUs can be added dynamically by skuOptions
         ],
         onChange: (value) => {
           this.sku = value;
+          this.load();
         }
       },
       {
@@ -166,13 +181,14 @@ export class ProductionQualityChartComponent implements OnInit, OnDestroy {
         placeholder: 'ALL',
         value: this.shift,
         options: [
-          { label: 'ALL', value: 'ALL' },
-          { label: '1', value: '1' },
-          { label: '2', value: '2' },
-          { label: '3', value: '3' }
-        ],  
+          { label: 'ALL', value: 0 },
+          { label: '1', value: 1 },
+          { label: '2', value: 2 },
+          { label: '3', value: 3 }
+        ],
         onChange: (value) => {
           this.shift = value;
+          this.load();
         }
       },
       {

@@ -10,10 +10,10 @@
       <div class="status-indicator">
         <span class="status-dot" [class.active]="!isLoading && !hasError"></span>
         <span class="status-text">
-          {{ isLoading ? 'Loading...' : hasError ? 'Error' : 'Live Updates' }}
+          {{ isLoading ? 'Loading...' : hasError ? 'Error' : 'Updated on' }}
         </span>
         <span class="last-updated" *ngIf="lastUpdated && !isLoading && !hasError">
-          • Updated {{ lastUpdated | date:'shortTime' }}
+          : {{ lastUpdated }} {{productionData.sku ? '|📦SKU: ' + productionData.sku : '' }}
         </span>
       </div>
     </div>
@@ -50,7 +50,7 @@
           <p class="stat-loading" *ngIf="isLoading">Loading...</p>
           <p class="stat-error" *ngIf="hasError && !isLoading">N/A</p>
         </div>
-      </div>
+      </div>     
 
       <!-- Current Shift Card -->
       <div class="stat-card shift-card">

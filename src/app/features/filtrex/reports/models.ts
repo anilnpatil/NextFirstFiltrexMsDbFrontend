@@ -1,7 +1,7 @@
 //production-report models
 export interface ProductionReportRow {
   date: string;        // yyyy-MM-dd
-  sku: string;
+  sku: number;
   shift: number;
   totalCount: number;
   okCount: number;
@@ -10,7 +10,7 @@ export interface ProductionReportRow {
 //view report models
 export interface ProductionReportViewRow {
   key: string;         // day | week | month label
-  sku: string;
+  sku: number;
   shift: number;
   totalCount: number;
   okCount: number;
@@ -27,7 +27,7 @@ export interface SummaryDateBlock {
 }
 // sku row in summary report
 export interface SummarySkuRow {
-  sku: string;
+  sku: number;
   shifts: {
     [shift: number]: {
       total: number;
@@ -42,8 +42,8 @@ export interface ProductionTotalsRow {
   periodKey: string;
   fromDate: string;
   toDate: string;
-  sku: string;
-  shift: string;
+  sku: number;
+  shift: number;
   totalCount: number;
   okCount: number;
   notOkCount: number;

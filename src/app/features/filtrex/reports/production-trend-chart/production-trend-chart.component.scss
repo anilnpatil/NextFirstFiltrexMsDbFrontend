@@ -1,6 +1,4 @@
-/* =========================================================
-   HOST
-========================================================= */
+/*    HOST  */
 :host {
   display: block;
   height: 100%;
@@ -8,16 +6,13 @@
   padding: 0;
   overflow: hidden;
   background: #f1f5f9;
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
-  /* local layout variables */
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;  
   --trend-header-height: 52px;
   --trend-footer-height: 28px;
   --app-header-offset: 0px; /* default spacing between core header and this component */
 }
 
-/* =========================================================
-   TREND HEADER (STICKY BELOW CORE HEADER)
-========================================================= */
+/*    TREND HEADER (STICKY BELOW CORE HEADER) */
 .trend-header {
   position: sticky;
   top: var(--app-header-offset, 12px); /* spacing below core header */
@@ -37,9 +32,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
 }
 
-/* =========================================================
-   TITLE BLOCK
-========================================================= */
+/*    TITLE BLOCK */
 .title-block {
   display: flex;
   flex-direction: column;
@@ -59,9 +52,7 @@
   }
 }
 
-/* =========================================================
-   FILTERS (COMPACT + STABLE)
-========================================================= */
+/*    FILTERS (COMPACT + STABLE)  */
 .filters {
   display: flex;
   align-items: center;
@@ -116,9 +107,7 @@
   }
 }
 
-/* =========================================================
-   BODY (NO FIXED POSITION — NO GAPS)
-========================================================= */
+/*    BODY (NO FIXED POSITION — NO GAPS)  */
 .trend-body {
   /* subtract small offset under core header, trend header and footer */
   height: calc(100% - var(--app-header-offset, 0px) - var(--trend-header-height, 52px) - var(--trend-footer-height, 28px));
@@ -127,9 +116,7 @@
   background: #f8fafc;
 }
 
-/* =========================================================
-   CHART CARD
-========================================================= */
+/*    CHART CARD  */
 .chart-card {
   position: relative;
   height: 100%;
@@ -146,9 +133,7 @@
   overflow: auto;
 }
 
-/* =========================================================
-   CANVAS (CRITICAL FOR AXIS VISIBILITY)
-========================================================= */
+/*    CANVAS (CRITICAL FOR AXIS VISIBILITY)  */
 .chart-card canvas {
   display: block;
   width: auto !important; /* allow canvas to use its intrinsic/drawn width */
@@ -156,9 +141,7 @@
   height: 100% !important;
 }
 
-/* =========================================================
-   LOADING OVERLAY
-========================================================= */
+/*    LOADING OVERLAY  */
 .loading-overlay {
   position: absolute;
   inset: 0;
@@ -197,9 +180,7 @@
   z-index: 120;
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
+/*    FOOTER  */
 .trend-footer {
   height: 28px;
   padding: 0 12px;
@@ -221,9 +202,7 @@
   opacity: 0.7;
 }
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+/*    RESPONSIVE  */
 @media (max-width: 1024px) {
   .trend-header {
     height: auto;

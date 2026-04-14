@@ -9,6 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './user.scss',
 })
 export class User {
-  // User/Search component for finding and viewing user data
-  // Can be extended with error handling and API calls as needed
+  // User/Search component for finding and viewing user data  
 }

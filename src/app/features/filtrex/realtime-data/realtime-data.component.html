@@ -18,9 +18,9 @@
 
     <!-- HEADER (FULL WIDTH) -->
     <div class="full-header">
-      <span>REAL-TIME MACHINE DATA</span>
       <span>SKU: {{ liveData.sku }}</span>
       <span>SHIFT : {{ liveData.shift }}</span>
+      <span>TIME: {{liveData.productionDateTime | date:'medium'}}</span>      
     </div>
 
     <!-- PANEL -->
@@ -29,48 +29,51 @@
       <div class="grid">
 
         <div class="cell">
-          <label>Production Count</label>
-          <div>{{ liveData.productionCount }}</div>
+          <label>TopCapPressAndHoldTime: </label>
+          <div>{{ liveData.topCapPressAndHoldTime }}</div>
         </div>
 
         <div class="cell">
-          <label>Cycle Time</label>
+          <label>BottomCapPressAndHoldTime: </label>
+          <div>{{ liveData.bottomCapPressAndHoldTime }}</div>
+        </div>
+
+        <div class="cell">
+          <label>BlockHeightValue: </label>
+          <div>{{ liveData.blockHeightValue }}</div>
+        </div>
+
+        <div class="cell">
+          <label>BlockHeightInspectionStatus: </label>
+          <div>
+            <span class="status-badge"
+                  [class.ok]="isPositiveStatus(liveData.blockHeightInspectionStatus)"
+                  [class.not-ok]="!isPositiveStatus(liveData.blockHeightInspectionStatus)">
+              <span class="status-icon">
+                {{ isPositiveStatus(liveData.blockHeightInspectionStatus) ? '✔︎' : '✘' }}
+              </span>
+              {{ isPositiveStatus(liveData.blockHeightInspectionStatus) ? 'OK' : 'NOT OK' }}
+            </span>
+          </div>
+        </div>
+
+        <div class="cell">
+          <label>AirFlowTestResult: </label>
+          <div>
+            <span class="status-badge"
+                  [class.ok]="isPositiveStatus(liveData.airFlowTestResult)"
+                  [class.not-ok]="!isPositiveStatus(liveData.airFlowTestResult)">
+              <span class="status-icon">
+                {{ isPositiveStatus(liveData.airFlowTestResult) ? '✔︎' : '✘' }}
+              </span>
+              {{ isPositiveStatus(liveData.airFlowTestResult) ? 'OK' : 'NOT OK' }}
+            </span>
+          </div>
+        </div>
+
+        <div class="cell">
+          <label>CycleTime: </label>
           <div>{{ liveData.cycleTime }}</div>
-        </div>
-
-        <div class="cell">
-          <label>Air Flow</label>
-          <div>{{ liveData.airFlowTestResult | uppercase }}</div>
-        </div>
-
-        <div class="cell">
-          <label>Assembly Height</label>
-          <div>{{ liveData.finalAssemblyHeight }}</div>
-        </div>
-
-        <div class="cell">
-          <label>Top Press Time</label>
-          <div>{{ liveData.topCapPressTime }}</div>
-        </div>
-
-        <div class="cell">
-          <label>Top Hold Time</label>
-          <div>{{ liveData.topCapHoldTime }}</div>
-        </div>
-
-        <div class="cell">
-          <label>Bottom Press Time</label>
-          <div>{{ liveData.bottomCapPressTime }}</div>
-        </div>
-
-        <div class="cell">
-          <label>Bottom Hold Time</label>
-          <div>{{ liveData.bottomCapHoldTime }}</div>
-        </div>
-
-        <div class="cell wide">
-          <label>Timestamp</label>
-          <div>{{ liveData.timestamp | date:'medium' }}</div>
         </div>
 
       </div>
@@ -78,9 +81,9 @@
       <!-- STATUS -->
       <div class="status-footer">
         <span class="status"
-              [class.ok]="statusOk"
-              [class.not-ok]="!statusOk">
-          {{ statusOk ? 'OK' : 'NOT OK' }}
+              [class.ok]="partStatusOk"
+              [class.not-ok]="!partStatusOk">
+          {{ partStatusOk ? 'OK' : 'NOT OK' }}
         </span>
       </div>
 

@@ -24,7 +24,7 @@ export class RealtimeDataComponent implements OnInit, OnDestroy {
 
   liveData!: LiveData;
 
-  statusOk = false;
+  partStatusOk = false;
   isLoading = true;
   hasError = false;
   errorMessage = '';
@@ -45,7 +45,7 @@ export class RealtimeDataComponent implements OnInit, OnDestroy {
         next: (data) => {
           if (data && data.length > 0) {
             this.liveData = data[0];
-            this.statusOk = this.liveData.status === 1;
+            this.partStatusOk = this.liveData.partStatus === 1;
             this.isLoading = false;
             this.hasError = false;
             this.errorMessage = '';
@@ -78,5 +78,10 @@ export class RealtimeDataComponent implements OnInit, OnDestroy {
     this.errorMessage = '';
     this.errorService.clearError();
     this.cdr.markForCheck();
+  }
+
+  isPositiveStatus(value: number | string | undefined): boolean {
+    const normalized = value?.toString().trim().toLowerCase();
+    return normalized === '1' || normalized === 'ok' || normalized === 'true';
   }
 }
