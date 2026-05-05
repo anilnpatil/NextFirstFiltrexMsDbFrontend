@@ -75,7 +75,7 @@ export class LoginComponent {
         }
         this.error = errorMessage;
         console.log('Setting error message:', errorMessage);
-        this.cdr.detectChanges(); // Force UI update
+        this.cdr.detectChanges(); 
       }
     });
   }

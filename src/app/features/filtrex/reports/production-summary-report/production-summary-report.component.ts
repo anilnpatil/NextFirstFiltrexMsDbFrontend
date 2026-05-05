@@ -81,6 +81,7 @@ export class ProductionReportComponent implements OnInit, OnDestroy {
         ],
         onChange: (value) => {
           this.view = value;
+          this.setupHeaderFilters();
           this.loadData();
         }
       },

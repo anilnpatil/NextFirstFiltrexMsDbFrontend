@@ -115,7 +115,7 @@
     border-radius: 999px;
     background: #f1f5f9;
     font-size: 13px;
-    transition: .2s;
+    transition: .4s;
   }
 
   input:checked + span {
@@ -183,7 +183,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: background 0.2s ease;
+  transition: background 0.4s ease;
+  align-items: center;
 }
 
 .date-group:nth-child(even) .date-cell {
@@ -220,7 +221,7 @@
   border-radius: 4px;
   display: flex;
   align-items: center;
-  transition: background 0.2s ease;
+  transition: background 0.4s ease;
 }
 
 /* ================= SHIFT CELL ================= */
@@ -246,9 +247,9 @@
     font-size: 13px;
   }
 
-  .total { background: #fef9c3; }
-  .ok { background: #dcfce7; color: #166534; }
-  .nok { background: #fee2e2; color: #991b1b; }
+  .total { background: #fef9c3; color:#ca8a04}
+  .ok { background: #dcfce7; color: #15803d; }
+  .nok { background: #fee2e2; color: #b91c1c; }
 }
 
 /* ================= NO DATA ================= */
@@ -306,16 +307,14 @@ table {
 
 /* ================= DATE CELL ================= */
 .date-cell {
-  background: #ffffff;
-  // border-left: 1px solid #2563eb;
-  border-bottom: 1px solid #2563eb;
-  // border-top: 0.1px solid #2563eb;
+  background: #ffffff;  
+  border-bottom: 1px solid #2563eb;  
   border-radius: 1px;
   padding: 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: background 0.2s ease;
+  transition: background 0.4s ease;
 }
 
 .date-group:nth-child(even) .date-cell {
@@ -327,7 +326,7 @@ table {
 
 /* ================= DATE TEXT ================= */
 .date-text {
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 800;
   margin-bottom: 10px;
 }
@@ -338,11 +337,11 @@ table {
   flex-direction: column;
   gap: 6px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
 
-  .total { color: #ca8a04; }
-  .ok { color: #15803d; }
-  .nok { color: #b91c1c; }
+  .total { background: #fef9c3; color:#ca8a04}
+  .ok { background: #dcfce7; color: #15803d; }
+  .nok { background: #fee2e2; color: #b91c1c; }
 }
 
 /* ================= SKU CELL ================= */
@@ -354,7 +353,7 @@ table {
   border-radius: 4px;
   display: flex;
   align-items: center;
-  transition: background 0.2s ease;
+  transition: background 0.4s ease;
 }
 
 /* ================= SHIFT CELL ================= */
@@ -365,24 +364,25 @@ table {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background 0.2s ease;
+  transition: background 0.4s ease;
 }
 
 /* ================= METRICS ================= */
 .metrics {
   display: flex;
-  gap: 8px;
+  gap: 20px;
   font-weight: 700;
 
   span {
-    padding: 4px 8px;
+    padding: 4px 30px;
     border-radius: 6px;
-    font-size: 13px;
+    font-size: 17px;
+    ;
   }
 
-  .total { background: #fef9c3; }
-  .ok { background: #dcfce7; color: #166534; }
-  .nok { background: #fee2e2; color: #991b1b; }
+  .total { background: #fef9c3; color:#ca8a04}
+  .ok { background: #dcfce7; color: #15803d; }
+  .nok { background: #fee2e2; color: #b91c1c; }
 }
 
 /* ================= NO DATA ================= */

@@ -1,7 +1,4 @@
-/**
- * User Model
- * Represents a user in the system
- */
+/** User Model */
 export interface User {
   id?: number;
   username: string;
@@ -11,9 +8,7 @@ export interface User {
   updatedAt?: string;
 }
 
-/**
- * API Response wrapper for consistency
- */
+/** API Response wrapper for consistency */
 export interface ApiResponse<T = any> {
   status: 'success' | 'error';
   message?: string;
@@ -21,26 +16,20 @@ export interface ApiResponse<T = any> {
   count?: number;
 }
 
-/**
- * Register Request DTO
- */
+/** Register Request DTO */
 export interface RegisterRequest {
   username: string;
   password: string;
   role: 'ADMIN' | 'USER';
 }
 
-/**
- * Auth Request DTO (Login)
- */
+/** Auth Request DTO (Login) */
 export interface AuthRequest {
   username: string;
   password: string;
 }
 
-/**
- * Login Response
- */
+/** Login Response */
 export interface LoginResponse {
   token: string;
 }

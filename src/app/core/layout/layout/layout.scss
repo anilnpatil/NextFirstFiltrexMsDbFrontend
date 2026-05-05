@@ -14,7 +14,7 @@
 
 .content {
   position: fixed;
-  top: 0;                                    /* no header space when hidden */
+  top: 0;                                    
   left: 0;
   right: 0;
   bottom: var(--app-footer-height, 42px);  /* footer height */

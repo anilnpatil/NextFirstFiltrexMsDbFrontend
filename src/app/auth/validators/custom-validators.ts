@@ -1,8 +1,6 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-/**
- * Custom validators for forms
- */
+/** Custom validators for forms */
 export class CustomValidators {
 
   /**

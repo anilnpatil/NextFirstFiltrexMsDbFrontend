@@ -15,11 +15,11 @@ export class ErrorDisplayComponent implements OnInit {
   error$ = this.errorService.error$;
 
   ngOnInit() {
-    // Auto-clear error after 10 seconds
+    // Auto-clear error after 3 seconds
     setInterval(() => {
       if (this.error$().hasError) {
         const elapsed = new Date().getTime() - this.error$().timestamp.getTime();
-        if (elapsed > 10000) {
+        if (elapsed > 3000) {
           this.dismissError();
         }
       }

@@ -13,7 +13,7 @@ export interface LiveData {
   bottomCapPressAndHoldTime: number;
   blockHeightValue: number;
   blockHeightInspectionStatus: number;
-  airFlowTestResult: string;
+  airFlowTestResult: number;
   partStatus: number;
   cycleTime: number; 
   productionDateTime: any;
@@ -57,8 +57,7 @@ export class FiltrexApiService {
 
   constructor(private http: HttpClient) {}
 
-  // LIVE DATA (Cached – High frequency calls)
-
+  
   getLiveData(): Observable<LiveData[]> {
     return this.http
       .get<LiveData[]>(API_CONFIG.FILTREX.LIVE_DATA)

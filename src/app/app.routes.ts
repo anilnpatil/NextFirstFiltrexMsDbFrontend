@@ -14,6 +14,7 @@ import { ProductionReportComponent } from './features/filtrex/reports/production
 import { ProductionTotalsReportsComponent } from './features/filtrex/reports/production-totals-reports/production-totals-reports.component';
 import { ProductionQualityChartComponent } from './features/filtrex/reports/production-quality-chart/production-quality-chart.component';
 import { ProductionTrendChartComponent } from './features/filtrex/reports/production-trend-chart/production-trend-chart.component';
+import { RejectionGraphComponent } from './features/filtrex/reports/rejection-graph/rejection-graph.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -34,6 +35,7 @@ export const routes: Routes = [
       { path: 'production-totals-report', component: ProductionTotalsReportsComponent, data: { title: 'Production Totals' } },
       { path: 'production-quality-chart', component: ProductionQualityChartComponent, data: { title: 'Production Quality' } },
       { path: 'production-trend-chart', component: ProductionTrendChartComponent, data: { title: 'Production Trend' } },
+      { path: 'rejection-graph', component: RejectionGraphComponent, data: { title: 'Rejection Graph' } }
 
     ]
   },

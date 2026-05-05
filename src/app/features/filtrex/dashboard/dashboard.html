@@ -1,6 +1,6 @@
 <div class="dashboard-container">
   <div class="dashboard-header">
-    <h1>Welcome to NextFirst Filtrex</h1>
+    <h1>Welcome to Filtrex</h1>
     <p>Your comprehensive filtering and data management solution</p>
   </div>
 
@@ -45,7 +45,7 @@
       <div class="stat-card parts-card notok-parts-card">
         <div class="stat-icon parts-icon notok-icon">❌</div>
         <div class="stat-info">
-          <h3>NOTOK Parts</h3>
+          <h3>NOT OK Parts</h3>
           <p class="stat-number" *ngIf="!isLoading && !hasError">{{ productionData.notOkParts }}</p>
           <p class="stat-loading" *ngIf="isLoading">Loading...</p>
           <p class="stat-error" *ngIf="hasError && !isLoading">N/A</p>
@@ -75,7 +75,7 @@
       <div class="action-grid">
         <button class="action-btn" routerLink="/realtimedata">
           <span class="action-icon">🔍</span>
-          <span>RealTime Data</span>
+          <span>Real Time Data</span>
         </button>
 
         <button class="action-btn" routerLink="/production-report">
@@ -85,17 +85,17 @@
 
         <button class="action-btn" routerLink="/production-totals-report">
           <span class="action-icon">📈</span>
-          <span>View Total PartCount</span>
+          <span>Total Part Count</span>
         </button>
 
         <button class="action-btn" routerLink="/view-reports">
           <span class="action-icon">📤</span>
-          <span>Parameter Reports</span>
+          <span>Parameter Report</span>
         </button>
 
         <button class="action-btn" routerLink="/graphical-reports">
           <span class="action-icon">📊</span>
-          <span>View graphical Reports</span>
+          <span>Graphical Reports</span>
         </button>
       </div>
     </div>

@@ -1,36 +1,3 @@
-// import { Component, input, output } from '@angular/core';
-// import { Router, RouterModule } from '@angular/router';
-// import { AuthService } from '../../../auth/auth.service';
-// import { CommonModule } from '@angular/common';
-
-// @Component({
-//   selector: 'app-header',
-//   imports: [RouterModule, CommonModule],
-//   templateUrl: './header.html',
-//   styleUrl: './header.scss',
-// })
-// export class Header {
-//   // Using Angular signals for reactive inputs/outputs
-//   sidebarCollapsed = input.required<boolean>();
-//   toggleSidebar = output<void>();
-
-//   constructor(
-//     private authService: AuthService,
-//     private router: Router
-//   ) {}
-
-//   logout() {
-//     this.authService.logout();
-//     this.router.navigate(['/login']);
-//   }
-
-//   onToggleSidebar(): void {
-//     this.toggleSidebar.emit();
-//   }
-// }
-
-
-
 import { Component, output, input, inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';

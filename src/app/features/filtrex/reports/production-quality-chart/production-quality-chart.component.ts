@@ -110,6 +110,7 @@ export class ProductionQualityChartComponent implements OnInit, OnDestroy {
         ],
         onChange: (value) => {
           this.mode = value;
+          this.setupHeaderFilters();
           this.load();
         }
       },

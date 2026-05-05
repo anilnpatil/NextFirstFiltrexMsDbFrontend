@@ -39,6 +39,7 @@ export class ViewReportComponent implements OnInit, OnDestroy {
 
   /** Pagination */
   page = 0;
+  pageInput = 1;
   size = 15;
   totalElements = 0;
   totalPages = 0;
@@ -180,6 +181,20 @@ export class ViewReportComponent implements OnInit, OnDestroy {
     }
   }
 
+  /** Go to entered page number */
+  goToPage(): void {
+    const targetPage = Number(this.pageInput);
+    if (!Number.isInteger(targetPage) || targetPage < 1 || targetPage > this.totalPages) {
+      return;
+    }
+
+    const newPage = targetPage - 1;
+    if (newPage !== this.page) {
+      this.page = newPage;
+      this.fetchData(false);
+    }
+  }
+
   /** Core loader */
   private fetchData(reset: boolean): void {
     this.loading = true;
@@ -204,6 +219,7 @@ export class ViewReportComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (res: PagedResponse<LiveData>) => {
           this.page = res.number;
+          this.pageInput = this.page + 1;
           this.totalPages = res.totalPages;
           this.totalElements = res.totalElements;          
           // navigating pages.

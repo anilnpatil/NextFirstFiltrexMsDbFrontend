@@ -72,10 +72,8 @@ export class RegisterComponent {
         this.success = true;
         this.cdr.detectChanges();
 
-        if (this.disableRedirect) {
-          // Emit success event for parent component (e.g., admin)
-          this.registrationSuccess.emit({ username });
-          // Reset form and hide success message after 2 seconds
+        if (this.disableRedirect) {          
+          this.registrationSuccess.emit({ username });          
           setTimeout(() => {
             this.success = false;
             this.registerForm.reset({ role: 'USER' });

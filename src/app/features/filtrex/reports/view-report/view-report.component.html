@@ -32,8 +32,20 @@
         <td class="topCapPressAndHoldTime-col">{{ d.topCapPressAndHoldTime }}</td>
         <td class="bottomCapPressAndHoldTime-col">{{ d.bottomCapPressAndHoldTime }}</td>
         <td class="blockHeightValue-col">{{ d.blockHeightValue }}</td>
-        <td class="blockHeightInspectionStatus-col">{{ d.blockHeightInspectionStatus }}</td>
-        <td class="airFlowTestResult-col">{{ d.airFlowTestResult }}</td>        
+        <td class="blockHeightInspectionStatus-col">
+          <span class="status"
+                [class.ok]="d.blockHeightInspectionStatus === 1"
+                [class.notok]="d.blockHeightInspectionStatus !== 1">
+            {{ d.blockHeightInspectionStatus === 1 ? 'OK' : 'NOT OK' }}
+          </span>
+        </td>
+        <td class="airFlowTestResult-col">
+          <span class="status"
+                [class.ok]="d.airFlowTestResult === 1"
+                [class.notok]="d.airFlowTestResult !== 1">
+            {{ d.airFlowTestResult === 1 ? 'OK' : 'NOT OK' }}
+          </span>
+        </td>
         <td class="partStatus-col">
           <span class="status"
                 [class.ok]="d.partStatus === 1"
@@ -68,4 +80,24 @@
   <button (click)="next()" [disabled]="page >= totalPages - 1" type="button">
     Next
   </button>
+
+  <div class="page-entry">
+    <label for="pageInput">Go to page</label>
+    <input
+      id="pageInput"
+      type="number"
+      min="1"
+      [max]="totalPages"
+      [(ngModel)]="pageInput"
+      (keyup.enter)="goToPage()"
+      [disabled]="loading || totalPages === 0"
+    />
+    <button
+      (click)="goToPage()"
+      [disabled]="loading || totalPages === 0"
+      type="button"
+    >
+       Go
+    </button>
+  </div>  
 </div>

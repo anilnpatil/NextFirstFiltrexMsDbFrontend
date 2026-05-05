@@ -13,10 +13,9 @@ export class AuthService {
   private role = signal<UserRole | null>(null);
   private token = signal<string | null>(null);
 
-  private apiUrl = 'http://localhost:9091/api/auth'; // Adjust backend URL as needed
+  private apiUrl = 'http://localhost:9091/api/auth'; 
 
-  constructor(private http: HttpClient) {
-    // Load token from localStorage on service initialization
+  constructor(private http: HttpClient) {    
     const storedToken = localStorage.getItem('token');
     if (storedToken) {
       this.token.set(storedToken);
@@ -24,8 +23,7 @@ export class AuthService {
         const payload = JSON.parse(atob(storedToken.split('.')[1]));
         this.role.set(payload.role as UserRole);
         this.loggedIn.set(true);
-      } catch (e) {
-        // Invalid token, clear it
+      } catch (e) {        
         localStorage.removeItem('token');
       }
     }
@@ -33,10 +31,9 @@ export class AuthService {
 
   login(username: string, password: string): Observable<any> {
     return this.http.post<{ token: string }>(`${this.apiUrl}/login`, { username, password }).pipe(
-      timeout(10000), // 10 second timeout
+      timeout(10000), 
       tap(response => {
-        this.token.set(response.token);
-        // Decode token to get role (assuming JWT structure)
+        this.token.set(response.token);        
         const payload = JSON.parse(atob(response.token.split('.')[1]));
         this.role.set(payload.role as UserRole);
         this.loggedIn.set(true);
@@ -44,7 +41,7 @@ export class AuthService {
       }),
       catchError(error => {
         console.error('Login failed', error);
-        throw error; // Re-throw the error so it goes to error callback
+        throw error; 
       })
     );
   }
@@ -58,10 +55,8 @@ export class AuthService {
     );
   }
 
-  /**
-   * Get all users
-   * @returns Observable of user list
-   */
+  /** Get all users
+   * @returns Observable of user list  */
   getAllUsers(): Observable<any> {
     return this.http.get(`${this.apiUrl}/users`).pipe(
       timeout(10000),
@@ -72,8 +67,7 @@ export class AuthService {
     );
   }
 
-  /**
-   * Get user by ID
+  /** Get user by ID
    * @param id User ID
    * @returns Observable of user details
    */
@@ -87,8 +81,7 @@ export class AuthService {
     );
   }
 
-  /**
-   * Delete user by ID
+  /** Delete user by ID
    * @param id User ID to delete
    * @returns Observable of deletion response
    */
@@ -120,8 +113,7 @@ export class AuthService {
   getToken(): string | null {
     return this.token();
   }
-
-  // ✅ REQUIRED FOR SIDEBAR
+  
   hasRole(role: UserRole): boolean {
     return this.role() === role;
   }

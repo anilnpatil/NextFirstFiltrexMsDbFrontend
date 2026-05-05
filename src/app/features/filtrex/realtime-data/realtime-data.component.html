@@ -18,9 +18,9 @@
 
     <!-- HEADER (FULL WIDTH) -->
     <div class="full-header">
-      <span>SKU: {{ liveData.sku }}</span>
+      <span>SKU : {{ liveData.sku }}</span>
       <span>SHIFT : {{ liveData.shift }}</span>
-      <span>TIME: {{liveData.productionDateTime | date:'medium'}}</span>      
+      <span>TIME : {{liveData.productionDateTime | date:'medium'}}</span>      
     </div>
 
     <!-- PANEL -->
@@ -29,22 +29,22 @@
       <div class="grid">
 
         <div class="cell">
-          <label>TopCapPressAndHoldTime: </label>
+          <label>TOP CAP PRESS AND HOLD TIME (sec): </label>
           <div>{{ liveData.topCapPressAndHoldTime }}</div>
         </div>
 
         <div class="cell">
-          <label>BottomCapPressAndHoldTime: </label>
+          <label>BOTTOM CAP PRESS AND HOLD TIME (sec): </label>
           <div>{{ liveData.bottomCapPressAndHoldTime }}</div>
         </div>
 
         <div class="cell">
-          <label>BlockHeightValue: </label>
+          <label>BLOCK HEIGHT VALUE (mm): </label>
           <div>{{ liveData.blockHeightValue }}</div>
         </div>
 
         <div class="cell">
-          <label>BlockHeightInspectionStatus: </label>
+          <label>BLOCK HEIGHT INSPECTION STATUS: </label>
           <div>
             <span class="status-badge"
                   [class.ok]="isPositiveStatus(liveData.blockHeightInspectionStatus)"
@@ -58,7 +58,7 @@
         </div>
 
         <div class="cell">
-          <label>AirFlowTestResult: </label>
+          <label>AIR FLOW TEST RESULT: </label>
           <div>
             <span class="status-badge"
                   [class.ok]="isPositiveStatus(liveData.airFlowTestResult)"
@@ -72,7 +72,7 @@
         </div>
 
         <div class="cell">
-          <label>CycleTime: </label>
+          <label>CYCLE TIME: </label>
           <div>{{ liveData.cycleTime }}</div>
         </div>
 

@@ -31,14 +31,12 @@ export class LayoutComponent {
   constructor() {
     this.router.events.pipe(
       filter((e): e is NavigationEnd => e instanceof NavigationEnd)
-    ).subscribe(event => {
-      // Show header on all routes except login
+    ).subscribe(event => {      
       const isLoginPage = event.urlAfterRedirects.includes('/login');
       this.showHeader.set(!isLoginPage);
       this.updatePageTitle();
     });
-
-    // Initial check
+    
     const isLoginPage = this.router.url.includes('/login');
     this.showHeader.set(!isLoginPage);
   }
