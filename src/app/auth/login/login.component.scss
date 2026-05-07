@@ -158,23 +158,6 @@
   }
 }
 
-.login-footer {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #e1e5e9;
-  text-align: center;
-
-  p {
-    margin: 0.25rem 0;
-    font-size: 0.8rem;
-    color: #666;
-
-    strong {
-      color: #333;
-    }
-  }
-}
-
 @media (max-width: 480px) {
   .login-card {
     margin: 1rem;

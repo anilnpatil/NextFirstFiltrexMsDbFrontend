@@ -65,9 +65,9 @@ export class FiltrexApiService {
   }
 
   //PRODUCTION SUMMARY (Single object)  
-  getProductionSummaryByShift(): Observable<ProductionSummary> {
+  getProductionSummaryByShift(shift: number): Observable<ProductionSummary> {
     return this.http.get<ProductionSummary>(
-      API_CONFIG.FILTREX.PRODUCTION_SUMMARY_SHIFT
+      `${API_CONFIG.FILTREX.PRODUCTION_SUMMARY_SHIFT}?shift=${shift}`
     );
   }
 
