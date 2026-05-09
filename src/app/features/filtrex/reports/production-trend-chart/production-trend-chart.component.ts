@@ -417,6 +417,8 @@ export class ProductionTrendChartComponent implements OnInit, OnDestroy {
       this.showAddItemModal = true;
     } else {
       this.compareItems = [];
+      this.selectedCompareSKU = 0;
+      this.selectedCompareShift = 0;
       this.showAddItemModal = false;
       this.loadChart();
     }
@@ -484,12 +486,16 @@ export class ProductionTrendChartComponent implements OnInit, OnDestroy {
 
   clearAllCompareItems(): void {
     this.compareItems = [];
+    this.selectedCompareSKU = 0;
+    this.selectedCompareShift = 0;
     this.showAddItemModal = true;
     this.refreshCompareData();
   }
 
   resetCompareToDefault(): void {
     this.compareItems = [];
+    this.selectedCompareSKU = 0;
+    this.selectedCompareShift = 0;
     this.showAddItemModal = true;
     this.refreshCompareData();
   }
